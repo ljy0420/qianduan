@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext", //指定 ECMAScript 目标版本
+    "module": "esnext", //指定模块代码生成的方式
+    "moduleResolution": "node", //指定模块解析策略
+    "removeComments": false, //当设置为 false 时，编译后的代码将保留注释。如果设置为 true，则在编译过程中会移除所有注释
+    "strict": true, // 启用所有严格类型检查选项。这是一个开关，开启后会使 TypeScript 更加严格（例如，避免隐式的 any 类型）
+    "jsx": "preserve", //指定 JSX 代码的处理方式。"preserve" 表示保留 JSX 不做任何转换，适合用于 React 等库的编译过程中
+    "sourceMap": false, //当设置为 false 时，不生成源映射文件。源映射可以帮助调试工具映射编译后的代码到原始 TypeScript 文件
+    "resolveJsonModule": true, // 允许导入 .json 文件。设置为 true 后可以直接在 TypeScript 中使用 import 导入 JSON 文件
+    "esModuleInterop": true, //当设置为 true 时，TypeScript 会启用 ECMAScript 模块与 CommonJS 模块之间的兼容性。这允许更简单的导入语法
+    "lib": ["esnext", "dom"], //指定编译时包含的库文件。["esnext", "dom"] 表示包含最新的 ES 标准库和 DOM 类型
+    "isolatedModules": true, //当设置为 true 时，要求每个文件都是一个独立的模块。这通常用于支持 Babel 等工具的情况
+    "baseUrl": "src", // 设置基础路径
+    "paths": {
+      "@/*": ["*"] // 允许使用 @ 符号作为 src 的别名
+    },
+    "typeRoots": [
+      //指定 TypeScript 查找类型定义的根目录。["./node_modules/@types", "./src/types"] 表示查找自定义类型定义的路径。
+      "./node_modules/@types",
+      "./src/types" // 添加自定义类型路径
+    ]
+  },
+  "include": [
+    "auto-imports.d.ts",
+    "src/**/*",
+    "env.d.ts",
+    "src/types/global.d.ts"
+  ], // 指定要包含在编译中的文件或目录
+  "exclude": ["node_modules"] //指定在编译时需要排除的目录或文件
+}
